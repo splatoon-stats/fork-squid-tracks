@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+import SplatoonStatsLink from './splatoon-stats-link';
 
 const TeamHeader = ({ player = { player: {} } }) => (
   <thead>
@@ -42,7 +43,11 @@ const TeamHeader = ({ player = { player: {} } }) => (
 const PlayerRow = ({ player }) => {
   return (
     <tr>
-      <td>{player.player.nickname}</td>
+      <td>
+        <SplatoonStatsLink player={player}>
+          {player.player.nickname}
+        </SplatoonStatsLink>
+      </td>
       <td>{`${player.player.player_rank}${
         player.player.star_rank > 0 ? `★${player.player.star_rank}` : ''
       }`}</td>

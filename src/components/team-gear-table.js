@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table, Image } from 'react-bootstrap';
+import { Image, Table } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+import SplatoonStatsLink from './splatoon-stats-link';
 
 const TeamHeader = ({ player = { player: {} } }) => (
   <thead>
@@ -87,7 +88,11 @@ const AbilityCell = ({ skills }) => {
 const PlayerRow = ({ player }) => {
   return (
     <tr>
-      <td>{player.player.nickname}</td>
+      <td>
+        <SplatoonStatsLink player={player}>
+          {player.player.nickname}
+        </SplatoonStatsLink>
+      </td>
       <td style={{ textAlign: 'center', background: 'darkgrey' }}>
         <Image
           src={`https://app.splatoon2.nintendo.net${player.player.weapon.thumbnail}`}

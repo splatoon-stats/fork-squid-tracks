@@ -1,6 +1,7 @@
 import React from 'react';
-import { Table, Image } from 'react-bootstrap';
+import { Image, Table } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+import SplatoonStatsLink from './splatoon-stats-link';
 
 const TeamHeader = ({ player = { player: {} } }) => (
   <thead>
@@ -54,11 +55,13 @@ const PlayerRow = ({ player, crown }) => {
       style={{ color: player.game_paint_point === 0 ? 'lightgrey' : undefined }}
     >
       <td>
-        {player.game_paint_point === 0 ? (
-          <strike>{player.player.nickname}</strike>
-        ) : (
-          player.player.nickname
-        )}
+        <SplatoonStatsLink player={player}>
+          {player.game_paint_point === 0 ? (
+            <strike>{player.player.nickname}</strike>
+          ) : (
+            player.player.nickname
+          )}
+        </SplatoonStatsLink>
       </td>
 
       {player.player.udemae ? (
